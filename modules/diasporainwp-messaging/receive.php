@@ -2,6 +2,8 @@
 
 	$log = '';
 
+	require_once "webfinger.php";
+
 	function decrypt_data($data, $iv, $key) {
 		$cypher = mcrypt_module_open(MCRYPT_RIJNDAEL_128, '', MCRYPT_MODE_CBC, '');
 
@@ -76,7 +78,17 @@
 		$item = $elements->item(0);
 		$sender_handle = $item->getElementsByTagName("sender_handle")->item(0)->nodeValue;
 		//echo "sender_handle: $sender_handle<br/>";
-		$wpdb->insert($table_name, array('diaspora_handle' => $sender_handle));
+		$webfinger_data = get_webfinger_data($sender_handle);
+		$wpdb->insert($table_name, array(
+			'diaspora_handle' => $sender_handle,
+			'pub_key' => $webfinger_data['pubkey'],
+			'profile_page' => $webfinger_data['profile_page'],
+			'guid' => $webfinger_data['guid'],
+			'seed_location' => $webfinger_data['seed_location'],
+			'hcard_url' => $webfinger_data['hcard_url'],
+			'full_name' => $webfinger_data['full_name'],
+			'image_url' => $webfinger_data['image_url']
+		));
 		$log .= "add contact: $sender_handle\n";
 	}
 	$elements = $dom->getElementsByTagName("retraction");

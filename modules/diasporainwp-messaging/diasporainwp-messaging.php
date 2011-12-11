@@ -17,6 +17,10 @@
 				full_name VARCHAR(255) DEFAULT '' NOT NULL,
 				image_url VARCHAR(255) DEFAULT '' NOT NULL,
 				pub_key text NOT NULL,
+				profile_page VARCHAR(255) DEFAULT '' NOT NULL,
+				guid VARCHAR(255) DEFAULT '' NOT NULL,
+				seed_location VARCHAR(255) DEFAULT '' NOT NULL,
+				hcard_url VARCHAR(255) DEFAULT '' NOT NULL,
 				UNIQUE KEY id (id)
 			 );";
 			 
