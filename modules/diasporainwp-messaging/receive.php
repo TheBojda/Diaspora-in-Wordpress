@@ -21,18 +21,24 @@
 
 		return false;
 	}
+	
+	function normalize_xml($xml) {
+		return trim(str_replace(array("\n", "\r", "\\", chr(1)), "", $xml));
+	}
 
 	$post = $_POST['xml'];
 	$xml = trim(urldecode($post));
 	
-	$log .= "xml: $xml\n";
+	$log .= "xml: ".normalize_xml($xml)."\n";
 	
 	$dom = new DOMDocument();
 	$me_ns = "http://salmon-protocol.org/ns/magic-env";
-	$dom->loadXML($xml);
+	$dom->loadXML(normalize_xml($xml));
 	$encrypted_header = $dom->getElementsByTagName("encrypted_header")->item(0)->nodeValue;
 	$data = $dom->getElementsByTagNameNS($me_ns, "data")->item(0)->nodeValue;
 	$sig = $dom->getElementsByTagNameNS($me_ns, "sig")->item(0)->nodeValue;
+
+	$log .= "encrypted_header: ".$encrypted_header."\n";
 
 	$encrypted_header = json_decode(base64_decode($encrypted_header));
 
@@ -52,7 +58,7 @@
 	$log .= "decrypted_header: $decrypted_header\n";
 
 	$dom = new DOMDocument();
-	$dom->loadXML($decrypted_header);
+	$dom->loadXML(normalize_xml($decrypted_header));
 	$iv = $dom->getElementsByTagName("iv")->item(0)->nodeValue;
 	$aes_key = $dom->getElementsByTagName("aes_key")->item(0)->nodeValue;
 
@@ -72,7 +78,7 @@
 	$table_name = $wpdb->prefix . "diw_contacts";
 	
 	$dom = new DOMDocument();
-	$dom->loadXML($data);
+	$dom->loadXML(normalize_xml($data));
 	$elements = $dom->getElementsByTagName("request");
 	if( $elements->length > 0 ) {
 		$item = $elements->item(0);
