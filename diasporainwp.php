@@ -4,7 +4,7 @@
  Plugin URI: http://wordpress.org/extend/plugins/diasporainwp/
  Description: Diaspora Pod implementation for Wordpress
  Author: Laszlo Fazekas
- Author URI: http://lf.estontorise.com
+ Author URI: https://plus.google.com/u/0/100023476653128296395/posts
  Version: 1.0
  Text Domain: diasporainwp
  License: GPL
