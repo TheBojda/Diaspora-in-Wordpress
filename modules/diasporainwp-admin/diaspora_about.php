@@ -1,4 +1,4 @@
-<table width="100%" border="1">
+<table width="100%" border="0">
 <tr>
 <td>
 <?php

@@ -12,15 +12,15 @@
 		}
 		
 		function show_settings() {
-			include('settings.php');
+			include('diaspora_settings.php');
 		}
 		
 		function show_about() {
-			include('about.php');
+			include('diaspora_about.php');
 		}
 		
 		function show_contacts() {
-			include('contacts.php');
+			include('diaspora_contacts.php');
 		}
 		
 	}

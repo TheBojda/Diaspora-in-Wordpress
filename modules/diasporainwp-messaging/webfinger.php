@@ -1,5 +1,7 @@
 <?php
 
+	require_once "crypto.php";
+
 	function get_webfinger_data($diaspora_handle) {
 		list($user, $host) = split("@", $diaspora_handle);
 	
@@ -50,7 +52,7 @@
 					$profile_page = $item->attributes->getNamedItem("href")->nodeValue;
 				}
 				if( $rel_attribute->nodeValue == 'diaspora-public-key' ) {
-					$pubkey = base64_decode($item->attributes->getNamedItem("href")->nodeValue);
+					$pubkey = rsatopem(base64_decode($item->attributes->getNamedItem("href")->nodeValue));
 				}
 			}
 		}
