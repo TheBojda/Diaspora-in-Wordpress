@@ -1,8 +1,8 @@
-Diaspora in Wordpress (W*) is PHP based Diaspora Pod implementation, based on Wordpress. Technically it is a plugin (or set of plugins) which adds Diaspora Pod functionality to your Wordpress blog.
+Diaspora in Wordpress (W*) is a PHP based Diaspora Pod implementation, based on Wordpress. Technically it is a plugin (or set of plugins) which adds Diaspora Pod functionality to your Wordpress blog.
 
 Why are we building it?
 
-Diaspora is a new way of social networking. It is decentralized, and everybody can own his/her own data. Diaspora is built on 'Ruby on Rails', which is a nice framework, but I think, the world need a PHP based solution. (It is easier to find hosting provider, and many people are more familiar to PHP than Ruby.)
+Diaspora is a new way of social networking. It is decentralized, and everybody can own his/her own data. Diaspora is built on 'Ruby on Rails', which is a nice framework, but I think, the world needs a PHP based solution. (It is easier to find a hosting provider, and many people are more familiar to PHP than Ruby.)
 
 Why is it built on Wordpress?
 
